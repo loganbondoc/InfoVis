@@ -1,42 +1,44 @@
 // const unpack = (data, key) => data.map(row => row[key])
-Plotly.d3.csv("csv/credibility.csv", population_data => {
-    const criteria = unpack(population_data, 'criteria');
-    const influencers = unpack(population_data, 'influencers');
-    console.log(criteria);
-    console.log(influencers);
+Plotly.d3.csv("csv/dysmorphia.csv", population_data => {
+    const time = unpack(population_data, 'time');
+    const successful = unpack(population_data, 'successful');
+    const feel = unpack(population_data, 'feel');
+    const validation = unpack(population_data, 'validation');
 
-    // var trace1 = {
-    //     x: criteria,
-    //     y: influencers,
-    //     name: 'Market Size',
-    //     mode: 'lines+markers',
-    //     hovertemplate: '<b>Year: </b>%{x}<br>' + '<b>Population: </b>%{y:.2f%}%<extra></extra>',
-    // }
+    var trace1 = {
+        x: time,
+        y: successful,
+        name: 'Market Size',
+        mode: 'lines+markers',
+        hovertemplate: '<b>Year: </b>%{x}<br>' + '<b>Population: </b>%{y:.2f%}%<extra></extra>',
+    }
 
     // constructing parent array
-    const parents = criteria.map(criterion => {
-        // if is one of the uncredible criteria
-        if (criterion === 'nudity' || criterion === 'sexualisation' || criterion === 'body') {
-            return 'uncredible';
-        // the amount of people that are considered qualified
-        } else if (criterion === 'qualified') {
-            return 'credible';
-        // if else return nothing
-        } else {
-            return '';
-        }
-    });
+    // const parents = criteria.map(criterion => {
+    //     // if is one of the uncredible criteria
+    //     if (criterion === 'nudity' || criterion === 'sexualisation' || criterion === 'body') {
+    //         return 'uncredible';
+    //     // the amount of people that are considered qualified
+    //     } else if (criterion === 'qualified') {
+    //         return 'credible';
+    //     // if else return nothing
+    //     } else {
+    //         return '';
+    //     }
+    // });
 
-    var data = [{
-        type: "sunburst",
-        labels: criteria,
-        parents: parents, 
-        // convert values to numbers
-        values: influencers.map(Number),
-        outsidetextfont: {size: 20, color: "#377eb8"},
-        leaf: {opacity: 0.4},
-        marker: {line: {width: 2}},
-    }];
+    var data = [trace1];
+
+    // var data = [{
+    //     type: "sunburst",
+    //     labels: criteria,
+    //     parents: parents, 
+    //     // convert values to numbers
+    //     values: influencers.map(Number),
+    //     outsidetextfont: {size: 20, color: "#377eb8"},
+    //     leaf: {opacity: 0.4},
+    //     marker: {line: {width: 2}},
+    // }];
     
 
     // var updatemenus = [{
@@ -165,7 +167,7 @@ var layout = {
 }
 
 
-    const plotDiv = document.getElementById('sunburst');
+    const plotDiv = document.getElementById('self-img');
 
     Plotly.newPlot(plotDiv, data, layout).then(function() {
         Plotly.addFrames(plotDiv, frames);
