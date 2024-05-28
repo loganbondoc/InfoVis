@@ -1,9 +1,25 @@
 // const unpack = (data, key) => data.map(row => row[key])
 Plotly.d3.csv("csv/dysmorphia.csv", population_data => {
-    const time = unpack(population_data, 'time');
-    const successful = unpack(population_data, 'successful');
-    const feel = unpack(population_data, 'feel');
-    const validation = unpack(population_data, 'validation');
+    // const time = unpack(population_data, 'time');
+    // const successful = unpack(population_data, 'successful');
+    // const feel = unpack(population_data, 'feel');
+    // const validation = unpack(population_data, 'validation');
+
+    const combinedData = population_data.map(row => ({
+        time: +row['time'], // Ensure time is treated as a number
+        successful: +row['successful'],
+        feel: +row['feel'],
+        validation: +row['validation']
+    }));
+
+    // Sort the combined data by time
+    combinedData.sort((a, b) => a.time - b.time);
+
+    // Unpack the sorted data
+    const time = combinedData.map(row => row.time);
+    const successful = combinedData.map(row => row.successful);
+    const feel = combinedData.map(row => row.feel);
+    const validation = combinedData.map(row => row.validation);
 
     var trace1 = {
         x: time,
@@ -11,7 +27,44 @@ Plotly.d3.csv("csv/dysmorphia.csv", population_data => {
         name: 'Market Size',
         mode: 'lines+markers',
         hovertemplate: '<b>Year: </b>%{x}<br>' + '<b>Population: </b>%{y:.2f%}%<extra></extra>',
+        transforms: [{
+            type: 'aggregate',
+            groups: time,
+            aggregations: [
+              {target: 'y', func: 'avg', enabled: true},
+            ]
+        }],
     }
+
+    var trace2 = {
+        x: time,
+        y: feel,
+        name: 'Feel',
+        mode: 'lines+markers',
+        hovertemplate: '<b>Time: </b>%{x}<br>' + '<b>Feel: </b>%{y:.2f}<extra></extra>',
+        transforms: [{
+            type: 'aggregate',
+            groups: time,
+            aggregations: [
+              {target: 'y', func: 'avg', enabled: true},
+            ]
+        }],
+    };
+
+    var trace3 = {
+        x: time,
+        y: validation,
+        name: 'Validation',
+        mode: 'lines+markers',
+        hovertemplate: '<b>Time: </b>%{x}<br>' + '<b>Validation: </b>%{y:.2f}<extra></extra>',
+        transforms: [{
+            type: 'aggregate',
+            groups: time,
+            aggregations: [
+              {target: 'y', func: 'avg', enabled: true},
+            ]
+        }],
+    };
 
     // constructing parent array
     // const parents = criteria.map(criterion => {
@@ -27,7 +80,7 @@ Plotly.d3.csv("csv/dysmorphia.csv", population_data => {
     //     }
     // });
 
-    var data = [trace1];
+    var data = [trace1, trace2, trace3];
 
     // var data = [{
     //     type: "sunburst",
