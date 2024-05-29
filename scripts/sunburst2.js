@@ -1,5 +1,5 @@
 // const unpack = (data, key) => data.map(row => row[key])
-Plotly.d3.csv("csv/credibility.csv", population_data => {
+Plotly.d3.csv("csv/products.csv", population_data => {
     const criteria = unpack(population_data, 'criteria');
     const influencers = unpack(population_data, 'influencers');
     console.log(criteria);
@@ -16,11 +16,11 @@ Plotly.d3.csv("csv/credibility.csv", population_data => {
     // constructing parent array
     const parents = criteria.map(criterion => {
         // if is one of the uncredible criteria
-        if (criterion === 'nudity' || criterion === 'sexualisation' || criterion === 'body') {
-            return 'uncredible';
+        if (criterion === 'calorie' || criterion === 'evidence' || criterion === 'effect') {
+            return 'failed';
         // the amount of people that are considered qualified
-        } else if (criterion === 'qualified') {
-            return 'credible';
+        } else if (criterion === 'relevant') {
+            return 'passed';
         // if else return nothing
         } else {
             return '';
@@ -165,7 +165,7 @@ var layout = {
 }
 
 
-    const plotDiv = document.getElementById('sunburst');
+    const plotDiv = document.getElementById('sunburst2');
 
     Plotly.newPlot(plotDiv, data, layout).then(function() {
         Plotly.addFrames(plotDiv, frames);
