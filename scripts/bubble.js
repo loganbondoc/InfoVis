@@ -1,62 +1,65 @@
 // import Highcharts from 'highcharts-more.js'
 const bubbleDiv = document.getElementById('bubble');
 
-    // Sample CSV data
-    const csvData = `
-criteria,influencers
-failed,8
-passed,1
-evidence,5
-effect,5
-calorie,9
-relevant,1
-    `;
+document.addEventListener('DOMContentLoaded', function () {
+    const url = 'csv/products.csv';
 
-    // Function to parse CSV data
-    function parseCSV(csvData) {
-        const parsedData = Papa.parse(csvData, { header: true }).data;
+    fetch(url)
+        .then(response => response.text())
+        .then(csvData => {
+            const data = parseCSV(csvData);
+            renderChart(data);
+        });
 
-        const seriesData = {
+    function parseCSV(csv) {
+        const lines = csv.split('\n');
+        const result = {
             failed: [],
             passed: []
         };
 
-        parsedData.forEach(row => {
-            const influencers = parseInt(row.influencers);
-            if (['failed', 'evidence', 'effect', 'calorie'].includes(row.criteria)) {
-                seriesData.failed.push({ value: influencers, name: row.criteria });
-            } else if (['passed', 'relevant'].includes(row.criteria)) {
-                seriesData.passed.push({ value: influencers, name: row.criteria });
+        lines.forEach(line => {
+            const [criteria, influencers] = line.split(',');
+            if (criteria && influencers) {
+                if (['evidence', 'effect', 'calorie'].includes(criteria)) {
+                    result.failed.push({
+                        name: criteria,
+                        value: parseInt(influencers)
+                    });
+                } else if (criteria === 'relevant') {
+                    result.passed.push({
+                        name: criteria,
+                        value: parseInt(influencers)
+                    });
+                }
             }
         });
 
-        return seriesData;
+        return result;
     }
 
-    const parsedData = parseCSV(csvData);
-
-    // Create Highcharts chart
-    Highcharts.chart(bubbleDiv, {
-        chart: {
-            type: 'packedbubble'
-        },
-        title: {
-            text: 'Packed Bubble Chart'
-        },
-        series: [{
-            name: 'Failed',
-            data: parsedData.failed
-        }, {
-            name: 'Passed',
-            data: parsedData.passed
-        }]
-    });
-
-Highcharts.chart(bubbleDiv, {
-    chart: {
-        type: 'packedbubble'
-    },
-    series: [{
-        data: [50, 12, 33, 45, 60] // sizes of the bubble
-    }]
+    function renderChart(data) {
+        Highcharts.chart(bubbleDiv, {
+            chart: {
+                type: 'packedbubble',
+            },
+            title: {
+                text: 'Packed Bubble Chart'
+            },
+            series: [{
+                name: 'Failed',
+                data: data.failed
+            }, {
+                name: 'Passed',
+                data: data.passed
+            }],
+            plotOptions: {
+                packedbubble: {
+                    layoutAlgorithm: {
+                        splitSeries: true
+                    }
+                }
+            }
+        });
+    }
 });
