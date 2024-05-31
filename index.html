@@ -1,43 +1,53 @@
 <head>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&family=Kite+One&display=swap" rel="stylesheet">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="https://code.highcharts.com/modules/pictorial.js"></script>
+    <script src="https://code.highcharts.com/modules/item-series.js"></script>
 </head>
 
 <body>
-    <h1 class = "mainHeading">The Hidden Dangers of Fitness Content on Social Media</h1>
+    <header>
+        <h1 class = "mainHeading">The Hidden Dangers of Fitness Content on Social Media</h1>
+    </header>
     
     <section class = "page-section">
-        <p>
-            Fitness and health is a __ thing that is good but it consumes the lives of people___.
-            You know those people, the gym bros, the gym rats, How many calories are in this?
-            I need to hit my protein intake. But what’s really going on under the surface?
-        </p>
         <div class = "side-by-side-container">
-            <div id="interactivePlotly"></div>
-            <p>
-                Fitness influencers are powerhouses on social media platforms, with hashtags such as #fitness amassing ____
-                followers and #fitnessmotivation amassing hundreds of millions of followers. Not only that, their endorsement for a
-                plethora of health and fitness products, contributes to a market that has exploded from 1.7 billion USD in 2016 to a projected 24 billion in 2024
-                Their impact is undeniable, yet a critical question looms large: 
-            </p>
+            <span>
+                <p>
+                    Fitness and health are an integral part of any balanced lifestyle. But
+                    you know those people, the gym bros, the fitness freaks. <b><em>"How many calories are in this?"</em>
+                        <em>"I need to hit my protein intake."</em></b> To outward appearance it may seem like overwhelming passion
+                    for nutritious living, but what’s really going on under the surface?
+                </p>
+                <p>
+                    Fitness influencers are powerhouses on social media platforms, with hashtags such as <b>#fitness</b> amassing <b>510 million</b>
+                    followers and <b>#fitnessmotivation</b> having <b>135 million</b> followers on Instagram in 2024. Not only that, their endorsement for a
+                    plethora of health and fitness products, contributes to a market that has exploded from <b>1.7 billion USD</b> in 2016 to a projected <b>24 billion</b> in 2024.
+                    Their impact is undeniable, yet a critical question looms large: 
+                </p>
+            </span>
+            <div id="interactivePlotly" class = "small-graph"></div>
         </div>
     </section>
 
-    <section class = "centered-text">
-        <h1>Are these influencers trustworthy sources of health and fitness advice?</h1>
+    <section id="header2" class = "centered-text">
+        <h1 class = "mainHeading">Are these influencers trustworthy sources<br> of health and fitness advice?</h1>
     </section>
 
     <section class = "page-section">
         <p>
             A recent examination into the content disseminated by fitness personalities reveals a troubling lack of credibility.
             The University of Glasgow conducted a study evaluating health food products endorsed by the top 9 health food blog influencers in 2018.
-            Alarmingly, 8 out of 9 of these influencers failed the assessment on a number of criteria, while every single one missed
+            Alarmingly, <b>8 out of 9 of these influencers failed</b> the assessment on a number of criteria, while <b>every single one</b> missed
             their calorie targets.
         </p>
-        <div id="sunburst2"></div>
+        <div id="sunburst2" class = "large-graph"></div>
     </section>
 
     <section class = "page-section">
@@ -45,58 +55,96 @@
             In a study conducted by BMC Public Health, 100 of the top Instagram accounts using the hashtag #fitspiration
             were evaluated for the credibility of their workout information and advice provided through video content.
             The findings highlighted that a significant number of these accounts were not credible sources of fitness advice as
-            their content had a strong focus on appearance and objectification of the body, as opposed to health and functionality
-            which leads to a rise in body image concern and eating disorders (Prichard et al., 2008). 
+            their content had a <b>strong focus on appearance</b> and <b>objectification of the body</b>, as opposed to health and functionality
+            which leads to a rise in <b>body image concern</b> and <b>eating disorders</b> (Prichard et al., 2008). 
         </p>
-        <div id="sunburst"></div>
+        <div id="sunburst" class = "large-graph"></div>
     </section>
 
     <section class = "page-section">
         <p>
             Moreover, a correlation exists between the time spent on social media and self-image related behavior.
             In a study conducted by Souvik, users were asked to rank their feelings towards statements on a scale of 1-5.
-            The findings convey that the longer time individuals spend on these platforms, there is a heightened need for
-            validation-seeking behavior and as users draw self-deprecating comparisons between themselves and the success of others.
+            The findings convey that <b>the longer time individuals spend on these platforms</b>, there is a heightened need for
+            <b>validation-seeking behavior</b> as users draw <b>self-deprecating comparisons</b> between themselves and the success of others.
         </p>
-        <div id="self-img"></div>
+        <div id="self-img" class = "large-graph"></div>
     </section>
+
+    <section class = "page-section">
+        <div class = "side-by-side-container">
+            <span>
+                <p>
+                    Research by Dr B. Jiotsa points to two primary theories that explain how social media can negatively impact body image.
+                </p>
+                <p>
+                    Comparison theory suggests that individuals who frequently compare themselves to others
+                    deemed more attractive or fit are prone to body dissatisfaction, a process <b>intensified by
+                    social media exposure.</b> 
+                </p>
+                <p>
+                    Objectification theory highlights the impact of societal norms, where women
+                    and girls are socialized to view their bodies from an external perspective, leading to <b>self-objectification
+                        and body dissatisfaction</b>. Similar patterns are observed in men and boys, with media promoting ideals of leanness and muscularity.
+                </p>
+            </span>
+            <div id="pictorial" class = "small-graph"></div>
+        </div>
+    </section>
+    
 
     <section class = "page-section">
         <p>
-            This creates a vicious cycle where the lack of credibility and qualifications among fitness influencers
-            leads to the spread of inaccurate and misleading health advice. The health food products they promote often fail
-            to deliver the promised results, leaving people dissatisfied with their bodies. The oversaturation of such content
-            adversely impacts users' mental wellbeing, fostering validation-seeking behavior and body dysmorphia. As a result,
+            This creates a vicious cycle where the <b>lack of credibility and qualifications</b> among fitness influencers
+            leads to the spread of <b>inaccurate and misleading health advice</b>. The health food products they promote often <b>fail
+            to deliver</b> the promised results, leaving people dissatisfied with their bodies. The oversaturation of such content
+            adversely impacts users' mental wellbeing, fostering <b>validation-seeking behavior and body dysmorphia.</b> As a result,
             individuals are more inclined to purchase these ineffective products and continue consuming misleading content,
-            perpetuating the cycle of dissatisfaction and misinformation.
+            perpetuating the <b>cycle of dissatisfaction and misinformation.</b>
         </p>
-        <img>
+        <div id = "diagram-container">
+            <img id = "diagram" src = "images/diagram.png">
+        </div>
     </section>
 
-    <section class = "centered-text">
-        <h1>But what can we do about it?</h1>
+    <section id = "header3" class = "centered-text">
+        <h1 class = "mainHeading">But what can we do about it?</h1>
     </section>
 
     <section class = "page-section">
-        <div class = "solution-container">
-            <h3>Title</h3>
-            <img>
-            <p>Description</p>
-        </div>
-        <div class = "solution-container">
-            <h3>Title</h3>
-            <img>
-            <p>Description</p>
-        </div>
-        <div class = "solution-container">
-            <h3>Title</h3>
-            <img>
-            <p>Description</p>
-        </div>
-        <div class = "solution-container">
-            <h3>Title</h3>
-            <img>
-            <p>Description</p>
+        <div id = "solutions">
+            <div class = "solution-row">
+                <div class = "solution-container">
+                    <h3>Reach out</h3>
+                    <p>Seeking help from a loved ones or a mental health professional can provide invaluable support for those struggling with body dysmorphia.
+                        If you or anyone you know is struggling, there are plenty of support services to reach out to:<br>
+                        <a href = "https://butterfly.org.au/get-support/chat-online/">The Butterfly National Helpline: 1800 33 4673</a><br>
+                        <a href = "https://kidshelpline.com.au/"> Kids Helpline: 1800 551 800</a><br>
+                        <a href = "https://www.beyondblue.org.au/">BeyondBlue: 1300 22 4636</a><br>
+                    </p>
+                </div>
+                <div class = "solution-container">
+                    <h3>Do your research</h3>
+                    <p>Before purchasing health and fitness products, take the time to investigate their claims
+                        and the qualifications of those endorsing them. Look for evidence-based reviews and consult
+                        credible sources to ensure the products are both safe and effective.
+                    </p>
+                </div>
+            </div>
+            <div class = "solution-row">
+                <div class = "solution-container">
+                    <h3>Take a break from social media</h3>
+                    <p>Reducing your exposure to social media can help alleviate the constant comparison and pressure
+                        to meet unrealistic body standards. Taking regular breaks or limiting screen time can significantly
+                        improve your mental well-being and self-image.</p>
+                </div>
+                <div class = "solution-container">
+                    <h3>Change your habits</h3>
+                    <p>Adopting healthier habits  can make a significant difference. Gradually facing anxiety-provoking situations without
+                        resorting to rituals and engaging in healthier mirror-related behaviors can help challenge negative beliefs and reduce
+                        body dysmorphia.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -104,5 +152,5 @@
     <script src="scripts/sunburst.js"></script>
     <script src="scripts/sunburst2.js"></script>
     <script src="scripts/selfImg.js"></script>
-    <script src="scripts/bubble.js"></script>
+    <script src="scripts/pictorial.js"></script>
 </body>

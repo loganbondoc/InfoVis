@@ -1,0 +1,113 @@
+/* Typography */
+
+.kite-one-regular {
+    font-family: "Kite One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+.heebo-regular> {
+    font-family: "Heebo", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+h1 {
+    font-size: 45px;
+}
+
+h3 {
+    font-size: 25px;
+    font-family: "Heebo", sans-serif;
+}
+
+p {
+    font-size: 16px;
+    font-family: "Heebo", sans-serif;
+}
+
+.mainHeading {
+    font-family: "Kite One", sans-serif;
+    text-align: center;
+}
+
+
+/* Article Layout Styling */
+
+header {
+    margin-bottom: 5vh;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    background-color:#92E3A9;
+}
+.centered-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10vh;
+    background-color: grey;
+    margin-bottom: 10vh;
+}
+
+#header2{
+    background: url('images/header2.png') no-repeat center center/cover;
+    height: 200px;
+}
+
+#header2 h1{
+    color: white;
+}
+
+#header3{
+    background: url('images/header3.png') no-repeat center center/cover;
+    height: 200px;
+}
+
+.page-section {
+    /* display: flex;
+    justify-content: center; */
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-bottom: 10vh;
+}
+
+.side-by-side-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+#solutions {
+    display: flex;
+    flex-direction: column;
+}
+
+.solution-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.solution-container {
+    display: flex;
+    flex-direction: column;
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+
+#diagram-container {
+    display: grid;
+    place-items: center; 
+}
+
+/* Graph Styling */
+.small-graph {
+    width: 45vw;
+    height: auto;
+}
+
+.large-graph {
+    width: 100%;
+    height: auto;
+}
